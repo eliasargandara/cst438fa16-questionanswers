@@ -41,4 +41,8 @@ public class QuestionsAnswers {
     public String getRandomQuestion() {
         return getRandomElement(questionsToAnswers.keySet());
     }
+    
+    public String getAnswerToQuestion(String question) {
+        return questionsToAnswers.get(question);
+    }
 }

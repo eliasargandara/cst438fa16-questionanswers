@@ -33,4 +33,40 @@ public class QuestionsAnswersService {
         }
     }
     */
+    
+    public static QuestionsAnswers questionsAnswers;
+    
+    public void instantiateQuestionsAnswers() {
+        if (questionsAnswers == null) {
+            questionsAnswers = new QuestionsAnswers();
+            
+            questionsAnswers.put("Who ate the cookies?", "Cookie Monster");
+            questionsAnswers.put("Why does the sky appear blue?", "Rayleigh Scattering");
+            questionsAnswers.put("What is Chad's favorite color?", "Black");
+        }
+    }
+
+    
+    @GET
+    @Path("/randomquestion")
+    public String randomquestion() {
+        instantiateQuestionsAnswers();
+        return questionsAnswers.getRandomQuestion();
+    }
+    
+    @GET
+    @Path("/testanswer")
+    public Response testanswer(@QueryParam("question") String question,
+                               @QueryParam("answer") String answer
+                               ) {
+        instantiateQuestionsAnswers();
+        if (question == null || question.isEmpty() ||
+            answer == null || question.isEmpty()
+            ) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
+        else {
+            return Response.ok(questionsAnswers.testAnswer(question, answer) ).build();
+        }
+    }
 }
