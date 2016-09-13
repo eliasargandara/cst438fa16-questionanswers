@@ -1,4 +1,4 @@
-package edu.csumb.cst438fa16hello.rest;
+package edu.csumb.cst438fa16qa.rest;
 
 import javax.ws.rs.core.Application;
 import javax.ws.rs.ApplicationPath;
@@ -10,5 +10,5 @@ import javax.ws.rs.ApplicationPath;
  * http://stackoverflow.com/a/26721737
  */
 @ApplicationPath("rest")
-public class HelloApplication extends Application {
+public class QuestionsAnswersApplication extends Application {
 }
